@@ -15,6 +15,7 @@ export default function Home({ list, searchSolr }) {
         <Box
             sx={{
                 display: "flex",
+                width: "100%",
                 minHeight: "100vh",
                 flexDirection: "column",
                 position: "relative",
