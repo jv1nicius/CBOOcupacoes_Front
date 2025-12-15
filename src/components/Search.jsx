@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 
@@ -9,13 +9,16 @@ export default function Search({ showOptions = true, value, setValue, list, sear
     const options = showOptions ? [...filterTitles] : [];
 
     useEffect(() => {
-        searchSolr(value)
+        if (value.trim().length >= 3) {
+            searchSolr(value)
+        }
     }, [value])
 
     return (
         <Autocomplete
             freeSolo
             options={options}
+            filterOptions={(x) => x}
             value={value}
             onInputChange={(e, newValue) => setValue(newValue)}
             sx={{
